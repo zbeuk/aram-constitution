@@ -1,0 +1,21 @@
+---
+import IndexLayout from '~/layouts/IndexLayout.astro';
+import {Article, ThemeButton} from '~/components';
+import {getArticles} from '~/contents';
+---
+
+<IndexLayout title="Constitution de l'ARAM">
+	<h1>
+		Texte intégral de la Constitution de l'ARAM du 4 juillet 2017 en vigueur
+	</h1>
+	<ThemeButton client:only={'solid-js'} />
+	{
+		getArticles.map(article => (
+			<Article
+				id={article.id}
+				content={article.content}
+				separate={article.separator}
+			/>
+		))
+	}
+</IndexLayout>
