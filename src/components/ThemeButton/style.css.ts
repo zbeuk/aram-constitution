@@ -3,7 +3,7 @@ import {css} from 'styled-system/css';
 export const wrapperStyle = css({
 	position: 'fixed',
 	top: '10px',
-	right: '10px',
+	right: '10px'
 });
 
 export const inputStyle = css({
@@ -30,7 +30,7 @@ export const inputStyle = css({
 		borderRadius: '30px 100px 100px 100px',
 		backgroundColor: '#fde881',
 		boxSizing: 'border-box',
-		transition: 'all 0.3s',
+		transition: 'all 0.3s'
 	},
 	_checked: {
 		borderRadius: '100px 100px 30px 100px',
@@ -38,7 +38,7 @@ export const inputStyle = css({
 		_before: {
 			left: '50%',
 			backgroundColor: '#626c80',
-			borderRadius: '100px 100px 30px 100px',
-		},
-	},
+			borderRadius: '100px 100px 30px 100px'
+		}
+	}
 });

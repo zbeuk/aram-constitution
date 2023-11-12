@@ -19,7 +19,7 @@ function createArticles(
 		const typeSafeArticle: ArticleProperties = {
 			id: article.id || index + 1,
 			content: article.content || <></>,
-			separator: index !== articles.length - 1 && (article.separator ?? true),
+			separator: index !== articles.length - 1 && (article.separator ?? true)
 		};
 
 		return typeSafeArticle;
@@ -33,7 +33,7 @@ export const getArticles = createArticles([
 				Tout joueur ayant perdu une partie d'ARAM est tenu de participer à une
 				nouvelle partie.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -43,7 +43,7 @@ export const getArticles = createArticles([
 				est aboli et les joueurs (autres que trollers) peuvent retourner vaquer
 				à leurs occupations.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -51,7 +51,7 @@ export const getArticles = createArticles([
 				À partir de 1h les ARAM pour les personnes présentes sur le discord sont
 				obligatoires.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -59,10 +59,10 @@ export const getArticles = createArticles([
 				Dans le cas ou il ne reste que 2 personnes, en cas d’accord des deux
 				participants, la règle des ARAM peut être abolie.
 			</p>
-		),
+		)
 	},
 	{
-		content: <p>Le leave en champion select est strictement interdit.</p>,
+		content: <p>Le leave en champion select est strictement interdit.</p>
 	},
 	{
 		content: (
@@ -72,7 +72,7 @@ export const getArticles = createArticles([
 				leur partie en cours et elle sera alors comptabilisée comme une défaite,
 				qu’importe le résultat.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -81,7 +81,7 @@ export const getArticles = createArticles([
 				abolir la règle des ARAM même si les 2 seules personnes s’accordent à
 				arrêter.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -89,7 +89,7 @@ export const getArticles = createArticles([
 				Si une game est inférieure à 15 minutes elle est considérée comme une
 				défaite.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -97,14 +97,14 @@ export const getArticles = createArticles([
 				En cas de victoire à la première partie de la série d'ARAM, cette partie
 				est comptabilisée comme une défaite.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
 			<p>
 				Si une game se fini 10 minutes avant 1h, la règle des ARAM s’applique.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -112,7 +112,7 @@ export const getArticles = createArticles([
 				Si Renaud propose une règle des ARAM, toute personne présente sur le
 				discord et jouant à LoL est obligé d'accepter.
 			</p>
-		),
+		)
 	},
 	{
 		content: (
@@ -121,7 +121,7 @@ export const getArticles = createArticles([
 				règle des ARAM, alors toutes les personnes présentent dans le vocal
 				doivent y participer.
 			</p>
-		),
+		)
 	},
 	{
 		id: 49.3,
@@ -130,7 +130,7 @@ export const getArticles = createArticles([
 				Les 2 créateurs de la règle des ARAM peuvent accorder une doléance en
 				cas d'accord.
 			</p>
-		),
+		)
 	},
 	{
 		id: 69,
@@ -142,11 +142,11 @@ export const getArticles = createArticles([
 				la partie est perdue, deux victoires sont nécessaires pour abolir la
 				règle.
 			</p>
-		),
+		)
 	},
 	{
 		id: 117,
-		content: <p>Interdit de modifier un article sauf sous referendum.</p>,
+		content: <p>Interdit de modifier un article sauf sous referendum.</p>
 	},
 	{
 		id: 999,
@@ -162,6 +162,6 @@ export const getArticles = createArticles([
 					<li>3 non respects → ban 1 mois.</li>
 				</ul>
 			</>
-		),
-	},
+		)
+	}
 ]);

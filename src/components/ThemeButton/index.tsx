@@ -3,7 +3,7 @@ import {
 	createSignal,
 	createEffect,
 	on,
-	onMount,
+	onMount
 } from 'solid-js';
 import {inputStyle, wrapperStyle} from './style.css';
 
@@ -49,6 +49,9 @@ export const ThemeButton: VoidComponent = () => {
 	return (
 		<>
 			<div class={wrapperStyle}>
+				<label for="darkmode-toggler" hidden>
+					Darkmode toggler
+				</label>
 				<input
 					class={inputStyle}
 					checked={currentTheme() === 'dark'}
