@@ -4,18 +4,14 @@ import {Article, ThemeButton} from '~/components';
 import {getArticles} from '~/contents';
 ---
 
-<IndexLayout title="Constitution de l'ARAM">
+<IndexLayout>
 	<h1>
 		Texte intégral de la Constitution de l'ARAM du 4 juillet 2017 en vigueur
 	</h1>
-	<ThemeButton client:only={'solid-js'} />
+	<ThemeButton client:load/>
 	{
 		getArticles.map(article => (
-			<Article
-				id={article.id}
-				content={article.content}
-				separate={article.separator}
-			/>
+			<Article {...article} />
 		))
 	}
 </IndexLayout>

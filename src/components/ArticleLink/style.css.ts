@@ -1,10 +1,10 @@
-import {style} from '@vanilla-extract/css';
+import {css} from 'styled-system/css';
 
-export const strongStyle = style({
+export const strongStyle = css({
 	fontWeight: '700',
 });
 
-export const linkStyle = style({
-	color: '#00a8e6',
+export const linkStyle = css({
+	color: 'link',
 	textDecoration: 'none',
 });

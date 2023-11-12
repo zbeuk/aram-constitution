@@ -1,13 +1,8 @@
-import {JSX, Show, VoidComponent} from 'solid-js';
+import {Show, type VoidComponent} from 'solid-js';
 import {titleStyle, separatorStyle, contentStyle} from './style.css';
+import type {ArticleProperties} from '~/contents';
 
-interface IArticleProperties {
-	id: number;
-	content: JSX.Element;
-	separate: boolean;
-}
-
-export const Article: VoidComponent<IArticleProperties> = properties => {
+export const Article: VoidComponent<ArticleProperties> = properties => {
 	return (
 		<>
 			<article>
@@ -15,7 +10,7 @@ export const Article: VoidComponent<IArticleProperties> = properties => {
 					Article {properties.id}.
 				</h2>
 				<div class={contentStyle}>{properties.content}</div>
-				<Show when={properties.separate}>
+				<Show when={properties.separator}>
 					<hr class={separatorStyle} />
 				</Show>
 			</article>
