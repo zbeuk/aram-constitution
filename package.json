@@ -10,7 +10,7 @@
 		"build": "astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint": "eslint src",
+		"lint": "eslint src --fix",
 		"prepare": "husky install && panda codegen"
 	},
 	"devDependencies": {
@@ -20,16 +20,19 @@
 		"@pandacss/astro": "^0.18.2",
 		"@pandacss/dev": "^0.18.2",
 		"@typescript-eslint/eslint-plugin": "^6.10.0",
+		"@typescript-eslint/parser": "^6.10.0",
 		"astro": "^3.5.3",
 		"eslint": "^8.53.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-define-config": "^1.24.1",
+		"eslint-plugin-astro": "^0.29.1",
 		"eslint-plugin-prettier": "^5.0.1",
 		"eslint-plugin-solid": "^0.13.0",
 		"eslint-plugin-sonarjs": "^0.23.0",
 		"eslint-plugin-unicorn": "^49.0.0",
 		"husky": "^8.0.3",
 		"prettier": "^3.0.3",
+		"prettier-plugin-astro": "^0.12.1",
 		"solid-js": "^1.8.5"
 	}
 }
