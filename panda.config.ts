@@ -2,18 +2,17 @@ import {
 	defineConfig,
 	defineSemanticTokens,
 	defineGlobalStyles,
-	defineTokens,
-	defineTextStyles,
+	defineTokens
 } from '@pandacss/dev';
 
 const globalCss = defineGlobalStyles({
 	html: {
-		font: 'body',
 		scrollBehavior: 'smooth',
-		color: 'text',
+		color: 'text'
 	},
 	body: {
 		backgroundColor: 'bg',
+		fontFamily: 'Inter'
 	},
 	main: {
 		width: '60%',
@@ -21,7 +20,7 @@ const globalCss = defineGlobalStyles({
 		padding: '50px',
 		backgroundColor: 'secondary',
 		borderRadius: '50px',
-		boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+		boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'
 	},
 	h1: {
 		marginTop: '20px',
@@ -30,8 +29,8 @@ const globalCss = defineGlobalStyles({
 		fontWeight: 600,
 		fontSize: '2.5em',
 		lineHeight: 1.2,
-		color: 'text',
-	},
+		color: 'text'
+	}
 });
 
 export default defineConfig({
@@ -41,27 +40,13 @@ export default defineConfig({
 	outdir: 'styled-system',
 	conditions: {
 		light: '[data-color-mode=light] &',
-		dark: '[data-color-mode=dark] &',
+		dark: '[data-color-mode=dark] &'
 	},
 	theme: {
-		textStyles: defineTextStyles({
-			body: {
-				description: 'The body text style - used in paragraphs',
-				value: {
-					fontFamily: 'Inter',
-					fontWeight: '500',
-					fontSize: '16px',
-					lineHeight: '24',
-					letterSpacing: '0',
-					textDecoration: 'None',
-					textTransform: 'None',
-				},
-			},
-		}),
 		tokens: defineTokens({
 			colors: {
-				link: {value: '#00a8e6', description: 'Color of URI links'},
-			},
+				link: {value: '#00a8e6', description: 'Color of URI links'}
+			}
 		}),
 		semanticTokens: defineSemanticTokens({
 			colors: {
@@ -69,38 +54,38 @@ export default defineConfig({
 					value: {
 						DEFAULT: {
 							_light: '#efebe8',
-							_dark: '#2b2d31',
-						},
+							_dark: '#2b2d31'
+						}
 					},
-					description: 'Global background color',
+					description: 'Global background color'
 				},
 				primary: {
 					value: {
 						DEFAULT: {
 							_light: '#efebe8',
-							_dark: '#2b2d31',
-						},
+							_dark: '#2b2d31'
+						}
 					},
-					description: 'Primary color theme',
+					description: 'Primary color theme'
 				},
 				secondary: {
 					value: {
 						_light: '#ffffff',
-						_dark: '#313338',
+						_dark: '#313338'
 					},
-					description: 'Secondary color theme',
+					description: 'Secondary color theme'
 				},
 				text: {
 					value: {
 						DEFAULT: {
 							_light: '#302e2d',
-							_dark: '#efebe8',
-						},
+							_dark: '#efebe8'
+						}
 					},
-					description: 'Global text color',
-				},
-			},
-		}),
+					description: 'Global text color'
+				}
+			}
+		})
 	},
-	globalCss,
+	globalCss
 });
