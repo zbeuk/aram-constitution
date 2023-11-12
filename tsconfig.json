@@ -1,12 +1,16 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
 		"baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"],
-      "@favicon/*": ["public/favicon/*"]
-    },
-  }
+		"resolveJsonModule": true,
+		"moduleDetection": "force",
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"paths": {
+			"~/*": ["src/*"],
+			"@favicon/*": ["public/favicon/*"],
+			"style-system/*": ["style-system"]
+		}
+	},
+	"include": ["src", "styled-system"]
 }
