@@ -1,45 +1,65 @@
-import {createSignal, type VoidComponent} from 'solid-js';
+import {
+	type VoidComponent,
+	createSignal,
+	createEffect,
+	on,
+	onMount
+} from 'solid-js';
+import {inputStyle, wrapperStyle} from './style.css';
 
-import {inputStyle, labelStyle} from './style.css';
-import {darkTheme, lightTheme} from '~/style.css';
-
-type Theme = 'dark' | 'light';
-
-const getCurrentTheme = () => {
-	const currentTheme =
-		(window.localStorage.getItem('theme') as Theme) ??
-		window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-	document.documentElement.className =
-		currentTheme === 'dark' ? darkTheme : lightTheme;
-
-	window.localStorage.setItem('theme', currentTheme);
-
-	return currentTheme;
-};
+export type Theme = 'light' | 'dark';
 
 export const ThemeButton: VoidComponent = () => {
-	const [currentTheme, setCurrentTheme] = createSignal<Theme>(
-		getCurrentTheme(),
+	const [currentTheme, setCurrentTheme] = createSignal<Theme>('light');
+
+	onMount(() => {
+		const prefferedTheme = window.matchMedia('(prefers-color-scheme: dark)')
+			.matches
+			? 'dark'
+			: 'light';
+
+		const defaultTheme =
+			(window.localStorage.getItem('theme') as Theme) ?? prefferedTheme;
+
+		const htmlElement = document.querySelector('html');
+
+		if (htmlElement) {
+			htmlElement.dataset.colorMode = defaultTheme;
+		}
+
+		setCurrentTheme(defaultTheme);
+	});
+
+	createEffect(
+		on(currentTheme, () => {
+			const htmlElement = document.querySelector('html');
+
+			if (htmlElement) {
+				htmlElement.dataset.colorMode = currentTheme();
+			}
+		})
 	);
 
-	const toggleTheme = () => {
+	const toggle = () => {
 		const oppositeTheme: Theme = currentTheme() === 'dark' ? 'light' : 'dark';
 		window.localStorage.setItem('theme', oppositeTheme);
-		oppositeTheme === 'dark' ? darkTheme : lightTheme;
 		setCurrentTheme(oppositeTheme);
 	};
 
 	return (
 		<>
-			<input
-				class={inputStyle}
-				checked={currentTheme() === 'dark'}
-				onClick={toggleTheme}
-				type="checkbox"
-				id="darkmode-toggler"
-			/>
-			<label class={labelStyle} for="darkmode-toggler" />
+			<div class={wrapperStyle}>
+				<label for="darkmode-toggler" hidden>
+					Darkmode toggler
+				</label>
+				<input
+					class={inputStyle}
+					checked={currentTheme() === 'dark'}
+					onClick={toggle}
+					type="checkbox"
+					id="darkmode-toggler"
+				/>
+			</div>
 		</>
 	);
 };
