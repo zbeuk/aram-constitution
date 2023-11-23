@@ -1,9 +1,10 @@
-name: CI
+name: Merge Request CI
 on:
   push:
     branches:
       - "*"
-      - "!master"
+      - "!main"
+
 jobs:
   build:
     runs-on: ubuntu-latest
