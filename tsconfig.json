@@ -12,5 +12,5 @@
 			"style-system/*": ["style-system"]
 		}
 	},
-	"include": ["src", "styled-system"]
+	"include": ["src"]
 }

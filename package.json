@@ -2,7 +2,7 @@
 	"name": "aram-constitution",
 	"description": "La constitution de l'ARAM.",
 	"type": "module",
-	"version": "2.0.0",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "astro dev",
@@ -14,15 +14,16 @@
 		"prepare": "husky install && panda codegen"
 	},
 	"devDependencies": {
+		"@astrojs/check": "^0.3.1",
 		"@astrojs/solid-js": "^3.0.2",
-		"@commitlint/cli": "^18.4.1",
-		"@commitlint/config-conventional": "^18.4.0",
-		"@pandacss/astro": "^0.18.2",
-		"@pandacss/dev": "^0.18.2",
-		"@typescript-eslint/eslint-plugin": "^6.10.0",
-		"@typescript-eslint/parser": "^6.10.0",
-		"astro": "^3.5.3",
-		"eslint": "^8.53.0",
+		"@commitlint/cli": "^18.4.3",
+		"@commitlint/config-conventional": "^18.4.3",
+		"@pandacss/astro": "^0.18.3",
+		"@pandacss/dev": "^0.18.3",
+		"@typescript-eslint/eslint-plugin": "^6.12.0",
+		"@typescript-eslint/parser": "^6.12.0",
+		"astro": "^3.6.0",
+		"eslint": "^8.54.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-define-config": "^1.24.1",
 		"eslint-plugin-astro": "^0.29.1",
@@ -31,8 +32,9 @@
 		"eslint-plugin-sonarjs": "^0.23.0",
 		"eslint-plugin-unicorn": "^49.0.0",
 		"husky": "^8.0.3",
-		"prettier": "^3.0.3",
-		"prettier-plugin-astro": "^0.12.1",
-		"solid-js": "^1.8.5"
+		"prettier": "^3.1.0",
+		"prettier-plugin-astro": "^0.12.2",
+		"solid-js": "^1.8.6",
+		"typescript": "^5.3.2"
 	}
 }
