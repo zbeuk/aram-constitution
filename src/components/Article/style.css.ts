@@ -12,11 +12,13 @@ export const separatorStyle = css({
 });
 
 export const contentStyle = css({
+	textAlign: {base: 'left', mdDown: 'center'},
 	'& > p': {
 		margin: '1em 0',
 		lineHeight: '1.5em'
 	},
 	'& > ul': {
+		textAlign: 'left',
 		listStyle: 'disc',
 		marginLeft: '1.5em',
 		lineHeight: '1.5em'
