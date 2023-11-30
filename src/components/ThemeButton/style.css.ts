@@ -3,13 +3,18 @@ import {css} from 'styled-system/css';
 export const wrapperStyle = css({
 	position: 'fixed',
 	top: '10px',
-	right: '10px'
+	right: {base: '10px', mdDown: '1%'},
+	mdDown: {
+		top: 'unset',
+		bottom: '10px',
+		opacity: '0.5'
+	}
 });
 
 export const inputStyle = css({
 	WebkitAppearance: 'none',
-	width: '100px',
-	height: '50px', // width / 2
+	width: {base: '100px', mdDown: '56px'},
+	height: '50px',
 	backgroundColor: 'secondary',
 	border: '3px solid #222222',
 	borderRadius: '30px 100px 100px 100px',
@@ -21,8 +26,8 @@ export const inputStyle = css({
 	_before: {
 		content: '""',
 		position: 'absolute',
-		width: '50px', // width / 2
-		height: '50px', // width / 2
+		width: {base: '50px', mdDown: '28'},
+		height: '50px',
 		left: 0,
 		top: '50%',
 		transform: 'translateY(-50%) scale(0.7)',
@@ -36,7 +41,7 @@ export const inputStyle = css({
 		borderRadius: '100px 100px 30px 100px',
 
 		_before: {
-			left: '50%',
+			left: {base: '50%', mdDown: 'unset'},
 			backgroundColor: '#626c80',
 			borderRadius: '100px 100px 30px 100px'
 		}

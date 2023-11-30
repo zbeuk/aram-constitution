@@ -8,8 +8,7 @@
 		"jsxImportSource": "solid-js",
 		"paths": {
 			"~/*": ["src/*"],
-			"@favicon/*": ["public/favicon/*"],
-			"style-system/*": ["style-system"]
+			"@favicon/*": ["public/favicon/*"]
 		}
 	},
 	"include": ["src"]

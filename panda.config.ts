@@ -15,7 +15,7 @@ const globalCss = defineGlobalStyles({
 		fontFamily: 'Inter'
 	},
 	main: {
-		width: '60%',
+		width: {base: '70%', xlDown: '80%'},
 		margin: '50px auto',
 		padding: '50px',
 		backgroundColor: 'secondary',
@@ -27,7 +27,7 @@ const globalCss = defineGlobalStyles({
 		marginBottom: '50px',
 		textAlign: 'center',
 		fontWeight: 600,
-		fontSize: '2.5em',
+		fontSize: {base: '2.5em', mdDown: '1.5em'},
 		lineHeight: 1.2,
 		color: 'text'
 	}
@@ -43,6 +43,12 @@ export default defineConfig({
 		dark: '[data-color-mode=dark] &'
 	},
 	theme: {
+		extend: {
+			breakpoints: {
+				sm: '412px',
+				md: '993px'
+			}
+		},
 		tokens: defineTokens({
 			colors: {
 				link: {value: '#00a8e6', description: 'Color of URI links'}
