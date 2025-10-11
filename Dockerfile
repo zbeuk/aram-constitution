@@ -19,5 +19,7 @@ RUN bun panda codegen
 RUN bun run build
 
 FROM httpd:2.4 AS runtime
+
 COPY --from=prerelease /usr/src/app/dist/ /usr/local/apache2/htdocs/
+
 EXPOSE 80
