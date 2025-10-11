@@ -10,7 +10,7 @@
 		"build": "astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint": "eslint src",
+		"lint": "bun biome ci src",
 		"prepare": "panda codegen"
 	},
 	"devDependencies": {
