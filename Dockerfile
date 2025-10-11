@@ -18,6 +18,9 @@ ENV NODE_ENV=production
 RUN bun panda codegen
 RUN bun run build
 
-FROM httpd:2.4 AS runtime
-COPY --from=prerelease /usr/src/app/dist/ /usr/local/apache2/htdocs/
-EXPOSE 80
+FROM oven/bun:1-alpine AS runtime
+COPY --from=prerelease /usr/src/app/dist/ .
+COPY --from=install /temp/prod/node_modules node_modules
+COPY --from=prerelease /usr/src/app/package.json .
+EXPOSE 3000
+CMD ["bun", "run", "preview"]

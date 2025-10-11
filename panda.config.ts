@@ -15,11 +15,12 @@ const globalCss = defineGlobalStyles({
 		fontFamily: "Inter",
 	},
 	main: {
-		width: { base: "70%", xlDown: "80%" },
-		margin: "50px auto",
-		padding: "50px",
+		maxWidth: "fit-content",
+		position: "relative",
+		margin: { base: "2em 15% 0 15%", mdDown: "0" },
+		padding: { base: "50px", mdDown: "20px" },
 		backgroundColor: "secondary",
-		borderRadius: "50px",
+		borderRadius: { base: "50px", mdDown: "0px" },
 		boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
 	},
 	h1: {
@@ -35,6 +36,7 @@ const globalCss = defineGlobalStyles({
 
 export default defineConfig({
 	jsxFramework: "solid",
+	presets: [],
 	preflight: true,
 	include: ["./src/**/*.{ts,tsx,js,jsx,astro}"],
 	outdir: "styled-system",
