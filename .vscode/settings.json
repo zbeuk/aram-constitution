@@ -1,10 +1,6 @@
 {
-  "cSpell.words": [
-    "aram",
-    "astro",
-    "astrojs",
-    "commitlint",
-    "darkmode",
-    "sonarjs"
-  ]
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "explicit",
+		"source.fixAll.biome": "explicit"
+	}
 }
