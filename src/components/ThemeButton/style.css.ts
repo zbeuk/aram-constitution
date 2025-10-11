@@ -12,7 +12,6 @@ export const wrapperStyle = css({
 });
 
 export const inputStyle = css({
-	WebkitAppearance: "none",
 	appearance: "none",
 	width: { base: "100px", mdDown: "56px" },
 	height: "50px",

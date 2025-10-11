@@ -4,7 +4,7 @@ import { ArticleLink } from "~/components";
 export interface ArticleProperties {
 	id: number;
 	content: JSX.Element;
-	separator: boolean;
+	separator?: boolean;
 }
 
 /**
@@ -12,14 +12,12 @@ export interface ArticleProperties {
  * @param articles - The list of articles to create.
  * @returns The list of articles with default values
  */
-function createArticles(
-	articles: Partial<ArticleProperties>[],
-): ArticleProperties[] {
+function createArticles(articles: ArticleProperties[]): ArticleProperties[] {
 	return articles.map((article, index) => {
 		const typeSafeArticle: ArticleProperties = {
-			id: article.id || index + 1,
+			id: article.id,
 			content: article.content,
-			separator: index !== articles.length - 1 && (article.separator ?? true),
+			separator: article.separator ?? index !== articles.length - 1,
 		};
 
 		return typeSafeArticle;
@@ -28,14 +26,24 @@ function createArticles(
 
 export const getArticles = createArticles([
 	{
+		id: 1,
 		content: (
 			<p>
-				Tout joueur ayant perdu une partie d'ARAM est tenu de participer à une
-				nouvelle partie.
+				Les joueurs doivent relançer une partie tant qu'ils n'ont pas gagner.
 			</p>
 		),
 	},
 	{
+		id: 2,
+		content: (
+			<p>
+				En cas de victoire à la première partie, cette partie est comptabilisée
+				comme une défaite.
+			</p>
+		),
+	},
+	{
+		id: 3,
 		content: (
 			<p>
 				En cas de troll de la part d’un coéquipier ou plus,
@@ -46,6 +54,7 @@ export const getArticles = createArticles([
 		),
 	},
 	{
+		id: 4,
 		content: (
 			<p>
 				À partir de 1h les ARAM pour les personnes présentes sur le discord sont
@@ -54,6 +63,15 @@ export const getArticles = createArticles([
 		),
 	},
 	{
+		id: 5,
+		content: (
+			<p>
+				Si une partie se fini 10 minutes avant 1h, la règle des ARAM s’applique.
+			</p>
+		),
+	},
+	{
+		id: 6,
 		content: (
 			<p>
 				Dans le cas ou il ne reste que 2 personnes, en cas d’accord des deux
@@ -62,73 +80,69 @@ export const getArticles = createArticles([
 		),
 	},
 	{
-		content: <p>Le leave en champion select est strictement interdit.</p>,
+		id: 7,
+		content: (
+			<p>Quitter en sélection des champions est strictement interdit.</p>
+		),
 	},
 	{
+		id: 8,
 		content: (
 			<p>
-				Si une personne extérieure souhaite rejoindre les actuels participants
-				en cours de règle des ARAM, ceux-ci doivent alors impérativement finir
-				leur partie en cours et elle sera alors comptabilisée comme une défaite,
-				qu’importe le résultat.
+				Si une personne souhaite rejoindre les actuels participants en cours de
+				règle des ARAM, ceux-ci doivent finir leur partie en cours et elle sera
+				alors comptabilisée comme une défaite, qu’importe le résultat.
 			</p>
 		),
 	},
 	{
+		id: 9,
 		content: (
 			<p>
-				À partir de 3h, il est obligatoire d’effectuer au moins 3 games pour
-				abolir la règle des ARAM même si les 2 seules personnes s’accordent à
-				arrêter.
+				À partir de 3h, il est obligatoire d’effectuer au moins 3 parties pour
+				abolir la règle des ARAM. Il n'est plus possible d'utiliser
+				<ArticleLink id={6} /> ou <ArticleLink id={49.3} />.
 			</p>
 		),
 	},
 	{
+		id: 10,
 		content: (
 			<p>
-				Si une game est inférieure à 15 minutes elle est considérée comme une
-				défaite.
+				Si une partie est inférieure à 15 minutes ou que les ennemies
+				abandonnent elle est considérée comme une défaite.
 			</p>
 		),
 	},
 	{
-		content: (
-			<p>
-				En cas de victoire à la première partie de la série d'ARAM, cette partie
-				est comptabilisée comme une défaite.
-			</p>
-		),
-	},
-	{
-		content: (
-			<p>
-				Si une game se fini 10 minutes avant 1h, la règle des ARAM s’applique.
-			</p>
-		),
-	},
-	{
+		id: 11,
 		content: (
 			<p>
 				Si Renaud propose une règle des ARAM, toute personne présente sur le
-				discord et jouant à LoL est obligé d'accepter.
+				discord et jouant à LoL sont obligés d'accepter.
 			</p>
 		),
 	},
 	{
-		content: (
-			<p>
-				Si une majorité de personnes présente dans le vocal participent à une
-				règle des ARAM, alors toutes les personnes présentent dans le vocal
-				doivent y participer.
-			</p>
-		),
+		id: 18,
+		content: <p>☠️ Mange tes morts !</p>,
 	},
 	{
 		id: 49.3,
 		content: (
 			<p>
-				Les 2 créateurs de la règle des ARAM peuvent accorder une doléance en
-				cas d'accord.
+				Les 2 créateurs (Thomas et Lucas) de la règle des ARAM peuvent accorder
+				une doléance en cas d'accord.
+			</p>
+		),
+	},
+	{
+		id: 55.55,
+		content: (
+			<p>
+				🎉 Dans le cas ou un allié fait un pentakill dans une partie elle est
+				considérée comme une défaite il faut en relancer une autre pour fêter le
+				pentakill.
 			</p>
 		),
 	},
@@ -138,9 +152,13 @@ export const getArticles = createArticles([
 			<p>
 				Une dérogation à
 				<ArticleLink id={5} />
-				est possible par le biais d'un pari : un abandon est autorisé, mais si
-				la partie est perdue, deux victoires sont nécessaires pour abolir la
-				règle.
+				est possible par le biais d'un pari :
+				<ul>
+					<li>
+						Un abandon est autorisé, mais si la partie est perdue, deux
+						victoires sont nécessaires pour abolir la règle.
+					</li>
+				</ul>
 			</p>
 		),
 	},
@@ -153,13 +171,13 @@ export const getArticles = createArticles([
 		content: (
 			<>
 				<p>
-					En cas de non respect de toute règle de l'ARAM, un ban ARAM est prévu
-					:
+					En cas de non respect de toute règle de l'ARAM, un ban de la règle est
+					prévu :
 				</p>
 				<ul>
-					<li>1 non respect → ban 1 jour,</li>
-					<li>2 non respects → ban 1 semaine,</li>
-					<li>3 non respects → ban 1 mois.</li>
+					<li>1 non respect → ban 1 mois</li>
+					<li>2 non respects → ban 3 mois</li>
+					<li>3 non respects → ban 1 an</li>
 				</ul>
 			</>
 		),

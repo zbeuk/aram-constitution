@@ -13,13 +13,13 @@ export const ThemeButton: VoidComponent = () => {
 	const [currentTheme, setCurrentTheme] = createSignal<Theme>("light");
 
 	onMount(() => {
-		const prefferedTheme = window.matchMedia("(prefers-color-scheme: dark)")
+		const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
 			.matches
 			? "dark"
 			: "light";
 
 		const defaultTheme =
-			(window.localStorage.getItem("theme") as Theme) ?? prefferedTheme;
+			(window.localStorage.getItem("theme") as Theme) ?? preferredTheme;
 
 		const htmlElement = document.querySelector("html");
 
