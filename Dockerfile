@@ -18,9 +18,6 @@ ENV NODE_ENV=production
 RUN bun panda codegen
 RUN bun run build
 
-FROM oven/bun:1-alpine AS release
-COPY --from=prerelease /usr/src/app/dist/ .
-
-USER bun
-EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "run", "index.html" ]
+FROM httpd:2.4 AS runtime
+COPY --from=prerelease /usr/src/app/dist/ /usr/local/apache2/htdocs/
+EXPOSE 80
