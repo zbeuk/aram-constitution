@@ -1,26 +1,26 @@
-import {css} from 'styled-system/css';
+import { css } from "styled-system/css";
 
 export const titleStyle = css({
-	fontSize: '1.3em',
-	fontWeight: 700
+	fontSize: "1.3em",
+	fontWeight: 700,
 });
 
 export const separatorStyle = css({
-	margin: '15px 0',
-	width: '100%',
-	border: `1px solid token(primary)`
+	margin: "15px 0",
+	width: "100%",
+	border: `1px solid token(primary)`,
 });
 
 export const contentStyle = css({
-	textAlign: {base: 'left', mdDown: 'center'},
-	'& > p': {
-		margin: '1em 0',
-		lineHeight: '1.5em'
+	textAlign: { base: "left", mdDown: "center" },
+	"& > p": {
+		margin: "1em 0",
+		lineHeight: "1.5em",
 	},
-	'& > ul': {
-		textAlign: 'left',
-		listStyle: 'disc',
-		marginLeft: '1.5em',
-		lineHeight: '1.5em'
-	}
+	"& > ul": {
+		textAlign: "left",
+		listStyle: "disc",
+		marginLeft: "1.5em",
+		lineHeight: "1.5em",
+	},
 });

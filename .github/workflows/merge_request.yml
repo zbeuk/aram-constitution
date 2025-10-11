@@ -8,26 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          version: latest
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
+            bun-version: latest
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
       - name: Lint
-        run: pnpm run lint
+        run: bun run lint
       - name: Build
-        run: pnpm run build
-      - name: Preview Bump version
+        run: bun run build
+      - name: Preview tag version
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.1
         with:

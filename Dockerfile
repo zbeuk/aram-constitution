@@ -1,12 +1,25 @@
-FROM node:21-alpine AS builder
+FROM oven/bun:1 AS base
+WORKDIR /usr/src/app
 
-ENV CI true
+FROM base AS install
+RUN mkdir -p /temp/dev
+COPY package.json bun.lock /temp/dev/
+RUN cd /temp/dev && bun install --frozen-lockfile --ignore-scripts
 
-WORKDIR /app
-COPY . ./
+RUN mkdir -p /temp/prod
+COPY package.json bun.lock /temp/prod/
+RUN cd /temp/prod && bun install --frozen-lockfile --ignore-scripts --production
 
-RUN corepack pnpm install && corepack pnpm run build
+FROM base AS prerelease
+COPY --from=install /temp/dev/node_modules node_modules
+COPY . .
 
-FROM nginx:alpine-slim
+ENV NODE_ENV=production
+RUN bun run build
 
-COPY --from=builder /app/dist/ /usr/share/nginx/html
+FROM oven/bun:1-alpine AS release
+COPY --from=prerelease /usr/src/app/dist/ .
+
+USER bun
+EXPOSE 3000/tcp
+ENTRYPOINT [ "bun", "run", "index.html" ]
