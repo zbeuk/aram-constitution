@@ -20,6 +20,8 @@ jobs:
         run: bun run lint
       - name: Build
         run: bun run build
+      - name: Run docker build
+        run: docker build .    
       - name: Preview tag version
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.1
