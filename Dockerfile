@@ -15,6 +15,7 @@ COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
 
 ENV NODE_ENV=production
+RUN bun panda codegen
 RUN bun run build
 
 FROM oven/bun:1-alpine AS release
