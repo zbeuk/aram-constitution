@@ -20,7 +20,7 @@ RUN bun run build
 
 FROM nginx:stable-alpine AS runtime
 
-COPY --from=prerelease nginx.conf /etc/nginx/nginx.conf
+COPY --from=prerelease /usr/src/app/nginx.conf /etc/nginx/nginx.conf
 COPY --from=prerelease /usr/src/app/dist/ /usr/share/nginx/html
 
 EXPOSE 80
