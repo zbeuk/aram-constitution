@@ -13,6 +13,7 @@ export const wrapperStyle = css({
 
 export const inputStyle = css({
   appearance: "none",
+  WebkitAppearance: "none",
   width: { base: "100px", mdDown: "56px" },
   height: "50px",
   backgroundColor: "secondary",
@@ -26,7 +27,7 @@ export const inputStyle = css({
   _before: {
     content: '""',
     position: "absolute",
-    width: { base: "50px", mdDown: "28" },
+    width: "50px",
     height: "50px",
     left: 0,
     top: "50%",
