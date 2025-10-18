@@ -1,63 +1,63 @@
 import {
-	createEffect,
-	createSignal,
-	on,
-	onMount,
-	type VoidComponent,
+  createEffect,
+  createSignal,
+  on,
+  onMount,
+  type VoidComponent,
 } from "solid-js";
 import { inputStyle, wrapperStyle } from "./style.css";
 
 export type Theme = "light" | "dark";
 
 export const ThemeButton: VoidComponent = () => {
-	const [currentTheme, setCurrentTheme] = createSignal<Theme>("light");
+  const [currentTheme, setCurrentTheme] = createSignal<Theme>("light");
 
-	onMount(() => {
-		const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
-			.matches
-			? "dark"
-			: "light";
+  onMount(() => {
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
 
-		const defaultTheme =
-			(window.localStorage.getItem("theme") as Theme) ?? preferredTheme;
+    const defaultTheme =
+      (window.localStorage.getItem("theme") as Theme) ?? preferredTheme;
 
-		const htmlElement = document.querySelector("html");
+    const htmlElement = document.querySelector("html");
 
-		if (htmlElement) {
-			htmlElement.dataset.colorMode = defaultTheme;
-		}
+    if (htmlElement) {
+      htmlElement.dataset.colorMode = defaultTheme;
+    }
 
-		setCurrentTheme(defaultTheme);
-	});
+    setCurrentTheme(defaultTheme);
+  });
 
-	createEffect(
-		on(currentTheme, () => {
-			const htmlElement = document.querySelector("html");
+  createEffect(
+    on(currentTheme, () => {
+      const htmlElement = document.querySelector("html");
 
-			if (htmlElement) {
-				htmlElement.dataset.colorMode = currentTheme();
-			}
-		}),
-	);
+      if (htmlElement) {
+        htmlElement.dataset.colorMode = currentTheme();
+      }
+    }),
+  );
 
-	const toggle = () => {
-		const oppositeTheme: Theme = currentTheme() === "dark" ? "light" : "dark";
-		window.localStorage.setItem("theme", oppositeTheme);
-		setCurrentTheme(oppositeTheme);
-	};
+  const toggle = () => {
+    const oppositeTheme: Theme = currentTheme() === "dark" ? "light" : "dark";
+    window.localStorage.setItem("theme", oppositeTheme);
+    setCurrentTheme(oppositeTheme);
+  };
 
-	return (
-		<div class={wrapperStyle}>
-			<label for="darkmode-toggler" hidden>
-				Darkmode toggler
-			</label>
-			<input
-				class={inputStyle}
-				checked={currentTheme() === "dark"}
-				onClick={toggle}
-				type="checkbox"
-				id="darkmode-toggler"
-			/>
-		</div>
-	);
+  return (
+    <div class={wrapperStyle}>
+      <label for="darkmode-toggler" hidden>
+        Darkmode toggler
+      </label>
+      <input
+        class={inputStyle}
+        checked={currentTheme() === "dark"}
+        onClick={toggle}
+        type="checkbox"
+        id="darkmode-toggler"
+      />
+    </div>
+  );
 };

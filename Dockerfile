@@ -18,8 +18,9 @@ ENV NODE_ENV=production
 RUN bun panda codegen
 RUN bun run build
 
-FROM httpd:2.4 AS runtime
+FROM nginx:stable-alpine AS runtime
 
-COPY --from=prerelease /usr/src/app/dist/ /usr/local/apache2/htdocs/
+COPY --from=prerelease nginx.conf /etc/nginx/nginx.conf
+COPY --from=prerelease /usr/src/app/dist/ /usr/share/nginx/html
 
 EXPOSE 80
